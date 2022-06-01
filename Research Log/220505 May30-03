@@ -34,6 +34,10 @@ Code Review: Updated `Elevation Mapping.md`
 
 # Thursday
 ---
+## Todo:
+- [ ] Look into `pcl_manager`
+- [ ] Try `elevation_mapping` on Huksy
+- [ ] Custom `GridMap`
 
 # Friday
 ---

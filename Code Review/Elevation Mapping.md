@@ -143,7 +143,7 @@ To initializeElevationMap: `PlanarFloorInitializer`, start tf, set robot on the 
 Existing topic/service upon construction:
 - elevationMapFusedPublisher_: "elevation_map", no subscription
 - underlyingMapTopic_: &ElevationMap::underlyingMapCallback
-- visibilityCleanupMapPublisher_: "visibility_cleanup_map", unfound
+- visibilityCleanupMapPublisher_: "visibility_cleanup_map"
 
 ### underlyingMapCallback
 
@@ -166,5 +166,24 @@ Resigter sensers and get topic. Only used upon initialization. Iterate through t
 
 #### Input
 Configure one input source.
+
+#### Input callback function: ElevationMapping::pointCloudCallback
+
+Steps:
+1. Publish pointcloud: ElevationMap::postprocessAndPublishRawElevationMap()
+2. Get robot pose covariance matrix `    boost::shared_ptr<geometry_msgs::PoseWithCovarianceStamped const> poseMessage = robotPoseCache_.getElemBeforeTime(lastPointCloudUpdateTime_);`
+3. Process pointcloud
+
+    From `SensorProcessorBase::process`: update tf, transform to sensor frame, filter, compute covariance.
+4. Update Map
+
+    Update map location, update map from motion prediction, clear map if needed.
+5. Add point cloud  to elevation map. `ElevationMap::add`
+
+    Use ElevationMap:: getIndex() to get position
+
+    Get init data.
+
+    Calculate Heigiht then add to map. `elvatoin = a*elevation + (1-a)*new_measurement`
 
 ---
