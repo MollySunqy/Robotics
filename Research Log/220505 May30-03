@@ -1,0 +1,42 @@
+# Todo:
+
+- [X] elevation-mapping demo
+- [ ] Try grid-map `image_to_gridmap_demo`
+- [ ] Connect grid-map to husky
+
+# Monday May.30
+---
+
+## elevation-mapping demo
+
+Cannot launch gazebo, elevation map was generated on rviz.
+
+Code Review: Updated `Elevation Mapping.md`
+
+
+# Tuesday May.31
+---
+
+## Todo:
+- [X] Code review, checkout `underlyingMapCallback`
+- [ ] Try `image_to_gridmap_demo`
+
+## C++ naming convention
+`underlyingMap_` underscore after variable name: private parameter.
+`~ElevationMapping` `~`ObjectName: deconstructor
+
+
+# Wednesday Jun.1
+---
+## Todo:
+- [ ] Figure out how input data is processed in elevation_mapping.
+- [ ] Try `image_to_gridmap_demo`
+
+# Thursday
+---
+
+# Friday
+---
+
+# Weekend
+---

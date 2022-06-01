@@ -26,7 +26,7 @@ surface normal, occupancy etc. Package provides ROS message converts: map -> Occ
 
 ## Use Case: Elevation Mapping
 
-### Background:
+### Background
 
 Assumption for an existing robot pose estimation and onboard range measurement sensor.
 To address error caused by sensor and pose estimation, a probabilistic elecation
@@ -34,11 +34,17 @@ mapping process is formulated.
 
 **Steps:**
 
- - 1. Measuremet Update: Fuse new range sensor measurement with existing data in
+ 1. Measuremet Update: Fuse new range sensor measurement with existing data in
  the map by means of a Kalman filter.
 
- - 2. Map Update: Update robot moves reflecting estimation error.
+ 2. Map Update: Update robot moves reflecting estimation error.
 
- - 3. Map Fusion: Compute estimated cell heights.
+ 3. Map Fusion: Compute estimated cell heights.
 
- 
+ ### Implementation
+
+ Subscription:
+
+  - `PointCloud2`
+
+  - `PoseWithCovarianceStamped`
