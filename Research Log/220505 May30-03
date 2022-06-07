@@ -39,8 +39,89 @@ Code Review: Updated `Elevation Mapping.md`
 - [ ] Try `elevation_mapping` on Huksy
 - [ ] Custom `GridMap`
 
+## Try `elevation_mapping` on husky
+
+### Active topic
+```
+/base_footprint_pose
+/camera/depth/points
+/camera/depth/points_downsampled
+/camera/image_raw
+/clicked_point
+/clock
+/cmd_vel
+/diagnostics
+/e_stop
+/elevation_mapping/elevation_map
+/elevation_mapping/elevation_map_raw
+/elevation_mapping/visibility_cleanup_map
+/gazebo/link_states
+/gazebo/model_states
+/gazebo/parameter_descriptions
+/gazebo/parameter_updates
+/gazebo/performance_metrics
+/gazebo/set_link_state
+/gazebo/set_model_state
+/husky_velocity_controller/cmd_vel
+/husky_velocity_controller/odom
+/husky_velocity_controller/parameter_descriptions
+/husky_velocity_controller/parameter_updates
+/imu/data
+/initialpose
+/joint_states
+/joy_teleop/cmd_vel
+/joy_teleop/joy
+/joy_teleop/joy/set_feedback
+/move_base_simple/goal
+/odometry/filtered
+/pcl_manager/bond
+/realsense/color/camera_info
+/realsense/color/image_raw
+/realsense/color/image_raw/compressed
+/realsense/color/image_raw/compressed/parameter_descriptions
+/realsense/color/image_raw/compressed/parameter_updates
+/realsense/color/image_raw/compressedDepth
+/realsense/color/image_raw/compressedDepth/parameter_descriptions
+/realsense/color/image_raw/compressedDepth/parameter_updates
+/realsense/color/image_raw/theora
+/realsense/color/image_raw/theora/parameter_descriptions
+/realsense/color/image_raw/theora/parameter_updates
+/realsense/depth/camera_info
+/realsense/depth/color/points
+/realsense/depth/image_rect_raw
+/realsense/parameter_descriptions
+/realsense/parameter_updates
+/rosout
+/rosout_agg
+/scan
+/set_pose
+/tf
+/tf_static
+/twist_marker_server/cmd_vel
+/twist_marker_server/feedback
+/twist_marker_server/update
+/twist_marker_server/update_full
+/voxel_grid/parameter_descriptions
+/voxel_grid/parameter_updates
+```
+
+Problem: does not have robot pose state. Try `movebase` or `amcl` launch instead.
+
+## Husky
+
+### Key Point:  pointcloud topic: `/realsense/depth/color/points`
+
 # Friday
 ---
+## Todo:
+- [ ] Look into `pcl_manager`
+- [X] Try `elevation_mapping` on Huksy
+- [ ] Custom `GridMap`
+
+## Husky
+
+Cannot build & save an elevation map yet.
+
 
 # Weekend
 ---
