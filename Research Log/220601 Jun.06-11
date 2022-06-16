@@ -1,0 +1,48 @@
+# Todo:
+
+- [X] Look into Terrain Classification
+- [ ] [Postponed] Design ROS node for terrain classification to be fill in `grid_map`
+
+
+# Monday Jun.06
+---
+
+## Design ROS node for terrain classification
+Terrain Classification: probably in Python
+
+grid_map: already in C++
+
+Solution: publish terrain information through a topic. Maybe be needed for later use as well
+
+
+
+# Tuesday
+---
+- [X] Install matlab
+- [ ] Run Unet Model
+- [ ] See how to use model in ROS
+- [X] Check video frame data representations
+
+## Matlab code reference
+
+[imageDatastore](https://www.mathworks.com/help/matlab/ref/matlab.io.datastore.imagedatastore.html)
+
+[pixelLableDatastore](https://www.mathworks.com/help/vision/ref/pixellabeldatastore.html)
+
+## Run Unet
+
+cannot run, missing ground truth element. Contact Malena already.
+
+## Matlab -> ROS
+[ROS Toolbox](https://www.mathworks.com/products/ros.html)
+
+**[writeImage](https://www.mathworks.com/help/ros/ref/writeimage.html)**
+
+**[rosReadImage](https://www.mathworks.com/help/ros/ref/rosreadimage.html)**
+
+
+# Wednesday
+---
+- [ ] Run Unet Model
+- [ ] See how to use model in ROS
+- [x] Finish pub and sub for tm package
