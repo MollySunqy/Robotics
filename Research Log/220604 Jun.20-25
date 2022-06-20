@@ -1,0 +1,43 @@
+# Todo:
+
+- [ ] Check on Malena`s code
+- [ ] Use matlab codegen
+- [ ] Generate
+
+# Monday Jun.20
+---
+
+## Use c++ static library in CMAKE
+
+In `CMakeList.txt` add
+
+```
+target_link_libraries(EXE_NAME $FULL_PATH_TO_LIB.a)
+```
+
+## Codegen in matlab
+
+need to generate a c++ static library, and link to CMakeList.
+
+
+# Tuesday Jun.21
+---
+
+## Meeting
+1. No code so far
+2. Matlab codegen: no need to run github code
+
+
+
+
+# Wednesday
+---
+
+# Thursday
+---
+
+# Friday
+---
+
+# Weekend
+---
