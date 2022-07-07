@@ -1,8 +1,13 @@
 # Todo:
 
 - [ ] Check on Malena`s code
-- [ ] Use matlab codegen
-- [ ] Generate
+- [X] Use matlab codegen
+
+# Todo after having the code:
+- [ ] What kind of message is outputed by Unet
+- [ ] How to represent different Terrain Type
+- [ ] How to process the outputed data in Terrain Map to be stored
+
 
 # Monday Jun.20
 ---
@@ -30,13 +35,6 @@ need to generate a c++ static library, and link to CMakeList.
 
 
 
-# Wednesday
----
-
-# Thursday
----
-
-# Friday
 ---
 
 # Weekend

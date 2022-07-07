@@ -1,0 +1,54 @@
+# Todo:
+
+- [X] Generate Unet C++
+- [ ] Use
+- [ ]
+
+# Monday Jun.27
+---
+Examined matlab code
+
+
+# Tuesday Jun.28
+---
+Installed mkl-dnn library. Wrong version installed.
+
+
+# Wednesday Jun.29
+---
+Expand Linux Space
+
+# Thursday Jun.30
+---
+
+## Husky ROS1
+
+Installed pacakges:
+```
+velodyne description
+robot localization
+realsense2 camera
+interactive_marker_twist_server
+twist_mux
+joy
+teleop_twist_joy
+pointcloud_to_laserscan
+
+```
+
+## Process Camera data
+
+### Realsense camera message
+
+```
+height:480
+width:640
+encoding:rgb8
+step:1920
+data[921600=1920*480=(604*3)*480]={unsigend char} 179 `\264`
+```
+
+References: [RGB8](https://en.wikipedia.org/wiki/8-bit_color)
+
+# Weekend
+---

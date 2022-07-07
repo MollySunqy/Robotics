@@ -1,0 +1,106 @@
+# Todo:
+
+- [ ]
+- [ ]
+- [ ]
+
+# Monday Jul.4
+---
+## Recap
+```
+height:480
+width:640
+encoding:rgb8
+step:1920
+data[921600=1920*480=(604*3)*480]={unsigend char} 179 `\264`
+```
+
+
+## image resize
+`img=imread();` img: 4032*3024*3
+
+[imresize](https://www.mathworks.com/help/matlab/ref/imresize.html):
+```
+B = imresize(A,[numrows numcols]) returns image B that has the number of rows and columns specified by the two-element vector [numrows numcols].
+
+```
+
+## [Code generation](https://www.mathworks.com/help/coder/ug/load-pretrained-networks-for-code-generation.html)
+mkl-dnn path:
+```
+setenv('INTEL_MKLDNN', '/usr/local/mkl-dnn')
+setenv('LD_LIBRARY_PATH', [getenv('INTEL_MKLDNN') filesep 'lib' pathsep getenv('LD_LIBRARY_PATH')]);
+```
+code-gen:
+```
+cfg = coder.config('lib');
+cfg.TargetLang = 'C++';
+cfg.DeepLearningConfig = coder.DeepLearningConfig('mkldnn');
+codegen -args {ones(480,640,3,'single')} -config cfg UnetPredict
+```
+
+
+
+## Import to C++
+
+```
+: && /usr/bin/c++ -g -rdynamic CMakeFiles/tutorial_node.dir/src/tutorial.cpp.o -o devel/lib/tutorial/tutorial_node  -Wl,-rpath,/opt/ros/noetic/lib  /opt/ros/noetic/lib/libroscpp.so  -lpthread  /usr/lib/x86_64-linux-gnu/libboost_chrono.so.1.71.0  /usr/lib/x86_64-linux-gnu/libboost_filesystem.so.1.71.0  /opt/ros/noetic/lib/librosconsole.so  /opt/ros/noetic/lib/librosconsole_log4cxx.so  /opt/ros/noetic/lib/librosconsole_backend_interface.so  -llog4cxx  /usr/lib/x86_64-linux-gnu/libboost_regex.so.1.71.0  /opt/ros/noetic/lib/libxmlrpcpp.so  /opt/ros/noetic/lib/libroscpp_serialization.so  /opt/ros/noetic/lib/librostime.so  /usr/lib/x86_64-linux-gnu/libboost_date_time.so.1.71.0  /opt/ros/noetic/lib/libcpp_common.so  /usr/lib/x86_64-linux-gnu/libboost_system.so.1.71.0  /usr/lib/x86_64-linux-gnu/libboost_thread.so.1.71.0  /usr/lib/x86_64-linux-gnu/libconsole_bridge.so.0.4  ../include/UnetPredict/UnetPredict.a && :
+/usr/bin/ld: ../include/UnetPredict/UnetPredict.a(MWMkldnnTargetNetworkImpl.o): in function `MWMkldnnTarget::MWTargetNetworkImpl::preSetup()':
+MWMkldnnTargetNetworkImpl.cpp:(.text+0x437): undefined reference to `dnnl_engine_create'
+```
+
+## Undefiend References
+```
+add_library(dnnl SHARED IMPORTED)
+set_property(TARGET dnnl PROPERTY IMPORTED_LOCATION "/usr/local/mkl-dnn/libdnnl.so")
+target_link_libraries(${PROJECT_NAME}_node
+  ${catkin_LIBRARIES}
+  ~/Projects/terrain-mapping/src/tutorial/include/codegen/lib/UnetPredict/UnetPredict.a
+  dnnl
+)
+```
+
+## OpenMP
+```
+FIND_PACKAGE(OpenMP REQUIRED)
+if(OPENMP_FOUND)
+  message("OPENMP FOUND")
+  set(CMAKE_C_FLAGS ${CMAKE_C_FLAGS} ${OpenMP_C_FLAGS})
+  set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} ${OpenMP_CXX_FLAGS})
+endif()
+```
+
+## Unable to find binary
+copy codegen to the working directory.(Probably launch in the future?)
+
+# Tuesday
+---
+
+- [X] Check publish rate for Matlab-generated code
+
+## Link package library
+
+Function name forgot TerrainClassify::
+
+```
+include_directories(include)
+```
+then no need to write relative path again.
+
+
+# Wednesday
+---
+Publish rate: with data processing in C: 0.2s
+
+Save time: put array as class variable.
+
+# Thursday
+---
+- [ ] Add `grid_map`
+
+
+# Friday
+---
+
+# Weekend
+---
